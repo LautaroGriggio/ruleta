@@ -1,0 +1,64 @@
+package juego;
+
+import java.util.Scanner;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		Crupier crupier = new Crupier();
+		
+		String nombre;
+		int dinero;
+		int cantidadJugadores;
+		
+		
+	
+		cantidadJugadores = utiles.IngreseEntero.ingresarEntero(s, "cuantos jugadores son: ", 1, 10);
+		s.nextLine();
+		
+		
+		for (int i = 0; i < cantidadJugadores; i++) {
+			
+			System.out.println("Ingrese su nombre");
+			nombre=s.nextLine();
+			dinero=utiles.IngreseEntero.ingresarEntero(s, "Ingrese el dinero", 10, 1000000000);
+			
+			Jugador j = new Jugador(nombre, dinero);
+			crupier.agregarJugador(j);
+			
+		}
+		
+        for (Jugador j : crupier.getJugadores()) {
+			System.out.println("Jugador " + j.getNombre() + " Que numero quiere apostar (0-36) ");
+			int numero = utiles.IngreseEntero.ingresarEntero(s, "", 0, 36);
+
+			int apuesta = utiles.IngreseEntero.ingresarEntero(s, "cuanto quiere apostar", 10, 1000000000);
+			
+			
+			j.apostar(apuesta, numero);
+			
+		}
+        s.close();
+        
+        System.out.println(" Las apuestas fueron tomadas, tirando la ruleta...");
+        
+        int n = crupier.tirarRuleta();
+		
+        for (Jugador j : crupier.getJugadores()) {
+        	
+        	if(j.getNumElegido()== n ) {
+        		System.out.println(" felicidadesss" );
+        		j.ganar();
+        		
+        		
+        	}else {
+        		System.out.println(j.getNombre() + " Usted perdio, intente denuevo");
+        	}
+        	
+        }
+	
+	}
+
+}
