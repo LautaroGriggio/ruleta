@@ -1,0 +1,49 @@
+package utiles;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class IngreseEntero {
+	public static void main(String[] args) {
+	
+
+	
+	
+	
+	
+	
+	}
+	public static int ingresarEntero(Scanner s, String mensaje, int MIN, int MAX) {
+		boolean flag = false;
+		int n;
+		do {
+			System.out.println(mensaje);
+			flag= false;
+			try {
+			n = s.nextInt();
+			s.nextLine();
+			flag=true;
+				if(n<MIN||n>MAX) {
+					System.out.println("Numero fuera de rango");
+					flag= false;
+					
+				}else {
+					return n;
+				}
+				
+		
+			}catch(InputMismatchException e) {
+			
+			System.out.println("Esto no es un numero intente denuevo");
+			flag = false;
+			}catch(Exception e) {
+			System.out.println("Error inesperado intente denuevo");
+			flag = false;
+			
+			}
+			
+		}while(!flag);
+		return -1;
+	}
+	
+}
