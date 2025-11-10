@@ -1,0 +1,25 @@
+package juego;
+
+import java.util.Random;
+
+public class Ruleta {
+	
+	Random r = new Random();
+	private int numRuleta=0;
+	
+	
+	public void girarRueleta() {
+		
+		numRuleta = r.nextInt(37);
+		
+	}
+	
+	public int getNumRuleta() {
+		
+		return numRuleta;
+	}
+	
+	
+	
+	
+}
