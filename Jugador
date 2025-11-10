@@ -1,0 +1,68 @@
+package juego;
+
+public class Jugador {
+
+	private String nombre;
+	private int dinero;
+	private int numElegido;
+	private int apuesta;
+	
+	public Jugador(String nombre, int dinero) {
+		
+		
+		
+		this.nombre =nombre;
+		this.dinero = dinero;
+		
+	}
+	
+	
+	public void apostar(int apuesta, int numElegido) {
+		boolean flag = false;
+		
+		do {
+			if(apuesta>dinero) {
+			
+				System.out.println("No te alcanza pa, ingresa otra vez");
+				flag= false;
+			
+			}else {
+			
+			dinero = dinero - apuesta;
+		
+			this.apuesta=apuesta;
+			this.numElegido = numElegido;
+			System.out.println(nombre + " aposto $" + apuesta + " al numero " + numElegido);
+			flag=true;
+			}
+		}while(!flag);
+		
+		
+	}
+	
+	public void ganar() {
+		dinero = dinero+ (apuesta*36);
+		
+		System.out.println(nombre + " Usted ganoo, su dinero actual es de:  "+ dinero);
+	}
+	
+	
+	
+	public String getNombre() {
+		
+		return nombre;
+	}
+	
+	public int getDinero() {
+		
+		return dinero;
+	}
+	
+	public int getNumElegido() { 
+		return numElegido;
+		}
+	public int getApuesta() {
+		return apuesta; 
+		}
+	
+}
